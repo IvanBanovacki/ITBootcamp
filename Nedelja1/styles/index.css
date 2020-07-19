@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Navigation bar */
+
+header {
+    background-color: #27303A;
+    width: 100%;
+    height: 50px;
+    top: 0;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index:1000;
+}
+
+nav ul li{
+    display: inline-block;
+    padding-left: 50px;  
+}
+
+nav ul li a {
+    color: #EEEFF0;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+nav ul li a:hover {
+    color: #68707E;
+}
+
+
+/* Main content */
+
+#home {
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/dark-lake.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#intro {
+    font-size: 40px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #EEEFF0;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+#about {
+    height: 100vh;
+    width: 100%;
+    background-color: #171419;
+    display: flex;
+}
+
+#about-text {
+    width: 60%;
+    margin: auto;
+    color: #EEEFF0;
+    font-weight: bold;
+}
+
+#about h2 {
+    font-size: 50px;
+    text-align: center;
+    font-weight: bolder;
+    line-height: 1.9;   
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+#about p {
+    font-size: 18px;
+    line-height: 3;   
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+/* Portfolio */
+
+#portfolio {
+    height: 100vh;
+    width: 100%;
+    background-color: #EDEEEF;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr;
+    gap: 0px 30px;
+    grid-template-areas: "project1 project2 project3 project4";
+    width: 80%;
+    margin: auto;
+    text-align: left;
+}
+  
+  .project1 { 
+    grid-area: project1;
+    border: #27303A solid 1px;
+    border-radius: 10px;
+}
+  
+  .project2 { 
+    grid-area: project2;
+    border: #27303A solid 1px;
+    border-radius: 10px;
+}
+  
+  .project3 { 
+    grid-area: project3; 
+    border: #27303A solid 1px;
+    border-radius: 10px;
+}
+  
+  .project4 {
+    grid-area: project4; 
+    border: #27303A solid 1px;
+    border-radius: 10px;
+}
+
+.grid-container img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.grid-container p {
+    font-size: 30px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    margin-top: 8px;
+    margin-left: 20px;
+}
+
+/* Contact form */
+
+#contact {
+    height: 95vh;
+    width: 100%;
+    background-color: #171419;
+    display: flex;
+    justify-content: center;
+}
+
+#contact-form {
+    width: 800px ;
+    height: 500px;
+    background-color:#171419;
+    margin-top: 70px;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 5px;
+    font-family:  Helvetica, Arial, sans-serif;
+    font-size: 50px;
+    color:#EDEEEF;
+}
+
+form label {
+    margin-left: 10px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color:#EDEEEF;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px;
+}
+
+
+/* Footer */
+
+footer {
+    height: 5vh;
+    width: 100%;
+    background-color: #171419;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer p {
+    color:#EDEEEF;
+    font-family:  "Trebuchet MS", Helvetica, sans-serif;
+    margin-left: 200px;
+}
+
+#social {
+    margin-right: 200px;
+}
+
+#social a {
+    padding-left: 20px;
+}
+
