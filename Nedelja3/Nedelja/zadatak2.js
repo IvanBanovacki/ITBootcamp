@@ -7,9 +7,9 @@
 
 
 function lifeSupply(numPerMonth,age){
-    if(numPerMonth <= 0 || age < 0){
+    if(numPerMonth <= 0 || age < 0 || age > 100){
         return 'Unesite validne parametre'
     }
     else return (100 - age) * 12 * numPerMonth
 }
-console.log(lifeSupply(10,26));
+console.log(lifeSupply(-10,126));
