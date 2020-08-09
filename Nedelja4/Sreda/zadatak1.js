@@ -73,3 +73,23 @@ let sorted = pokemoni.sort((a,b) => a.stats.speed - b.stats.speed).map(el => el.
 
 console.log(sorted);
 
+
+// showBtn.addEventListener('click', (e) => {
+//     pokemoni.forEach( el => {
+//         const pokemonDiv = document.createElement('div')
+    
+//         const pokemonPar = document.createElement('p')
+//         pokemonPar.textContent = `
+//         Name: ${el.name}||
+//         Type: ${el.type}||
+//         Abilities: ${el.abilities}||`
+    
+//         const pokemonImg = document.createElement('IMG')
+//         pokemonImg.src = el.image
+//         pokemonImg.height = 100
+    
+//         pokemonDiv.append(pokemonImg, pokemonPar)
+//         wrapperDiv.append(pokemonDiv)
+//     })
+// })
+
