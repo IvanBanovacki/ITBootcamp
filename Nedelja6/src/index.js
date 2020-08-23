@@ -1,4 +1,4 @@
-import { renderTotalAmounts, renderPercPerExpense } from "./DOM.js";
+import { renderTotalAmounts, renderPercPerExpense, renderPrihodi, renderRashodi } from "./DOM.js";
 import { isValid, error } from "./uslov.js";
 
 const form = document.querySelector("form");
@@ -15,74 +15,6 @@ let idCount = 0;
 let ukupanPrihod = 0;
 let ukupanRashod = 0;
 let budzet = 0;
-
-function renderRashodi(rashodiNiz) {
-    rashodList.innerHTML = "<li>Rashod:</li>";
-    rashodiNiz.forEach((el) => {
-        const item = document.createElement("li");
-        const opis = document.createElement("span");
-        const iznos = document.createElement("span");
-        const iznosDiv = document.createElement("div");
-        const percentage = document.createElement("span");
-        percentage.className = "percentage";
-        const izbrisiBtn = document.createElement("button");
-        izbrisiBtn.className = "hidden";
-        izbrisiBtn.textContent = "X";
-        if (Math.round((el.iznos / ukupanPrihod) * 100) == Infinity) {
-            percentage.textContent = "";
-        } else {
-            percentage.textContent = Math.round((el.iznos / ukupanPrihod) * 100) + "%";
-        }
-
-        item.addEventListener("mouseover", (e) => {
-            e.preventDefault();
-            izbrisiBtn.classList.remove("hidden");
-            setTimeout(() => {
-                izbrisiBtn.classList.add("hidden");
-            }, 1000);
-        });
-
-        opis.textContent = el.opis;
-        iznos.textContent = "- " + el.iznos;
-        iznosDiv.append(iznos, percentage, izbrisiBtn);
-        item.append(opis, iznosDiv);
-        rashodList.append(item);
-
-        izbrisiBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            izbrisiBtn.parentElement.parentElement.remove();
-            renderRashodi(rashodiNiz);
-        });
-    });
-}
-
-function renderPrihodi(prihodiNiz) {
-    prihodList.innerHTML = "<li>Prihod:</li>";
-    prihodiNiz.forEach((el) => {
-        const item = document.createElement("li");
-        const opis = document.createElement("span");
-        const iznos = document.createElement("span");
-        const iznosDiv = document.createElement("div");
-        const izbrisiBtn = document.createElement("button");
-        izbrisiBtn.classList.add("hidden");
-        izbrisiBtn.textContent = "X";
-
-        opis.textContent = el.opis;
-        iznos.textContent = "+ " + el.iznos;
-
-        item.addEventListener("mouseover", (e) => {
-            e.preventDefault();
-            izbrisiBtn.classList.remove("hidden");
-            setTimeout(() => {
-                izbrisiBtn.classList.add("hidden");
-            }, 1000);
-        });
-
-        iznosDiv.append(iznos, izbrisiBtn);
-        item.append(opis, iznosDiv);
-        prihodList.append(item);
-    });
-}
 
 btnSubmit.addEventListener("click", (e) => {
     e.preventDefault();

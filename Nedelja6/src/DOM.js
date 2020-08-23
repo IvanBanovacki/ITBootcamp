@@ -1,8 +1,8 @@
 import { prihodList, rashodList, ukupanPrihod } from "./index.js";
 
-function renderPrihodi(prihodiNiz) {
+function renderPrihodi(array) {
     prihodList.innerHTML = "<li>Prihod:</li>";
-    prihodiNiz.forEach((el) => {
+    array.forEach((el) => {
         const item = document.createElement("li");
         const opis = document.createElement("span");
         const iznos = document.createElement("span");
@@ -29,14 +29,14 @@ function renderPrihodi(prihodiNiz) {
         izbrisiBtn.addEventListener("click", (e) => {
             e.preventDefault();
             izbrisiBtn.parentElement.parentElement.remove();
-            renderPrihodi(prihodiNiz);
+            renderPrihodi();
         });
     });
 }
 
-function renderRashodi(rashodiNiz) {
+function renderRashodi(array) {
     rashodList.innerHTML = "<li>Rashod:</li>";
-    rashodiNiz.forEach((el) => {
+    array.forEach((el) => {
         const item = document.createElement("li");
         const opis = document.createElement("span");
         const iznos = document.createElement("span");
@@ -73,8 +73,8 @@ function renderRashodi(rashodiNiz) {
     });
 }
 
-function renderPercPerExpense(el) {
-    el.forEach((el) => {
+function renderPercPerExpense(array) {
+    array.forEach((el) => {
         const perc = document.getElementsByClassName("percentage");
         perc.innerHTML = "";
         let percNumber = Math.round((el.iznos / ukupanPrihod) * 100) + "%";
