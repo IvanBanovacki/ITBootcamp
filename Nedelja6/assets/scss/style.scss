@@ -1,0 +1,200 @@
+$second-color: #ff514a;
+$first-color: #28b9b4;
+$grey-color: #aaacc1;
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+#app {
+    height: 80vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+// Top part (Total budget and income and outcome total)
+
+#top-part {
+    height: 40vh;
+    background-color: $grey-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+    #info-container {
+        text-align: center;
+        line-height: 1.6;
+        width: 25%;
+        #dostupan-budzet {
+            font-size: 20px;
+        }
+
+        #budzet {
+            font-size: 50px;
+            height: 90px;
+        }
+
+        #prihod {
+            background-color: $first-color;
+            margin-bottom: 10px;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+
+            #prihod-total {
+                margin-right: 45px;
+                font-size: 18px;
+            }
+        }
+
+        #rashod {
+            background-color: $second-color;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+
+            #rashod-total {
+                font-size: 18px;
+                margin-right: 5px;
+            }
+
+            #procenat {
+                font-size: 14px;
+                padding: 2px;
+                border-radius: 3px;
+                width: 15px;
+                height: 15px;
+                background-color: lighten($second-color, $amount: 15);
+            }
+        }
+
+        .budzet-text {
+            color: black;
+        }
+    }
+}
+
+// Middle part(form and inputs)
+
+#middle-part {
+    height: 10vh;
+    background-color: #f7f7f7;
+
+    form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+        #select-option {
+            margin-right: 1rem;
+            height: 3rem;
+            width: 5rem;
+            color: white;
+        }
+        #desc-text {
+            margin-right: 1rem;
+            width: 25rem;
+            height: 3rem;
+        }
+        #amount-text {
+            margin-right: 1rem;
+            width: 5rem;
+            height: 3rem;
+        }
+        #btn-submit {
+            color: $second-color;
+        }
+    }
+}
+
+#bottom-part {
+    height: 50vh;
+
+    #lists-container {
+        display: flex;
+        margin: auto;
+        margin-top: 50px;
+        width: 80%;
+        justify-content: space-between;
+
+        #list-prihod {
+            width: 45%;
+            background-color: white;
+            list-style: none;
+
+            li:nth-child(1) {
+                color: #52a299;
+                font-size: 20px;
+                padding-bottom: 13px;
+                border-bottom: 1px solid $grey-color;
+            }
+            li {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid $grey-color;
+                height: 35px;
+                span {
+                    margin-left: 15px;
+                }
+                div {
+                    margin-right: 15px;
+                    span {
+                        margin-right: 15px;
+                        color: $first-color;
+                    }
+                    button {
+                        width: 10px;
+                        height: 10px;
+                    }
+                }
+            }
+        }
+
+        #list-rashod {
+            width: 45%;
+            background-color: white;
+            list-style: none;
+
+            li:nth-child(1) {
+                color: #c76768;
+                font-size: 20px;
+                padding-bottom: 13px;
+                border-bottom: 1px solid $grey-color;
+            }
+            li {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid $grey-color;
+                height: 35px;
+                span {
+                    margin-left: 15px;
+                }
+                div {
+                    margin-right: 15px;
+                    color: $second-color;
+                    span:nth-child(2) {
+                        padding: 2px;
+                        width: 20px;
+                        font-size: 14px;
+                        border-radius: 3px;
+                        background-color: lighten($second-color, $amount: 15);
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
