@@ -1,4 +1,4 @@
-import { renderTotalAmounts, renderPercPerExpense, renderPrihodi, renderRashodi } from "./DOM.js";
+import { renderAll } from "./DOM.js";
 import { isValid, error } from "./uslov.js";
 
 const form = document.querySelector("form");
@@ -16,6 +16,14 @@ let ukupanPrihod = 0;
 let ukupanRashod = 0;
 let budzet = 0;
 
+function getPrihodiNiz() {
+    return prihodiNiz;
+}
+
+function getRashodiNiz() {
+    return rashodiNiz;
+}
+
 btnSubmit.addEventListener("click", (e) => {
     e.preventDefault();
 
@@ -29,8 +37,6 @@ btnSubmit.addEventListener("click", (e) => {
             opis: descText.value,
             iznos: amountText.value,
         });
-        ukupanPrihod += Number(amountText.value);
-        budzet += Number(amountText.value);
     }
 
     if (select.value === "rashod") {
@@ -39,13 +45,8 @@ btnSubmit.addEventListener("click", (e) => {
             opis: descText.value,
             iznos: amountText.value,
         });
-        ukupanRashod += Number(amountText.value);
-        budzet -= Number(amountText.value);
     }
-    renderRashodi(rashodiNiz);
-    renderPrihodi(prihodiNiz);
-    renderPercPerExpense(rashodiNiz);
-    renderTotalAmounts(budzet, ukupanPrihod, ukupanRashod);
+    renderAll();
 
     descText.value = "";
     amountText.value = "";
@@ -64,4 +65,6 @@ export {
     prihodList,
     rashodList,
     form,
+    getPrihodiNiz,
+    getRashodiNiz,
 };

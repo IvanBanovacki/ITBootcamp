@@ -1,8 +1,8 @@
-import { prihodList, rashodList, ukupanPrihod } from "./index.js";
+import { prihodList, rashodList, getPrihodiNiz, getRashodiNiz } from "./index.js";
 
-function renderPrihodi(array) {
+function renderPrihodi() {
     prihodList.innerHTML = "<li>Prihod:</li>";
-    array.forEach((el) => {
+    getPrihodiNiz().forEach((el) => {
         const item = document.createElement("li");
         const opis = document.createElement("span");
         const iznos = document.createElement("span");
@@ -29,14 +29,18 @@ function renderPrihodi(array) {
         izbrisiBtn.addEventListener("click", (e) => {
             e.preventDefault();
             izbrisiBtn.parentElement.parentElement.remove();
-            renderPrihodi();
+            getPrihodiNiz().splice(getPrihodiNiz().length - 1, 1);
+            renderUkupanPrihod();
+            renderBudzet();
+            renderPercPerExpense();
+            renderProcenti();
         });
     });
 }
 
-function renderRashodi(array) {
+function renderRashodi() {
     rashodList.innerHTML = "<li>Rashod:</li>";
-    array.forEach((el) => {
+    getRashodiNiz().forEach((el) => {
         const item = document.createElement("li");
         const opis = document.createElement("span");
         const iznos = document.createElement("span");
@@ -46,10 +50,10 @@ function renderRashodi(array) {
         const izbrisiBtn = document.createElement("button");
         izbrisiBtn.className = "hidden";
         izbrisiBtn.textContent = "X";
-        if (Math.round((el.iznos / ukupanPrihod) * 100) == Infinity) {
+        if (Math.round((el.iznos / renderUkupanPrihod()) * 100) == Infinity) {
             percentage.textContent = "";
         } else {
-            percentage.textContent = Math.round((el.iznos / ukupanPrihod) * 100) + "%";
+            percentage.textContent = Math.round((el.iznos / renderUkupanPrihod()) * 100) + "%";
         }
 
         item.addEventListener("mouseover", (e) => {
@@ -69,16 +73,20 @@ function renderRashodi(array) {
         izbrisiBtn.addEventListener("click", (e) => {
             e.preventDefault();
             izbrisiBtn.parentElement.parentElement.remove();
+            getRashodiNiz().splice(getRashodiNiz().length - 1, 1);
+            renderUkupanRashod();
+            renderBudzet();
+            renderPercPerExpense();
+            renderProcenti();
         });
     });
 }
 
-function renderPercPerExpense(array) {
-    array.forEach((el) => {
+function renderPercPerExpense() {
+    getRashodiNiz().forEach((el) => {
         const perc = document.getElementsByClassName("percentage");
         perc.innerHTML = "";
-        let percNumber = Math.round((el.iznos / ukupanPrihod) * 100) + "%";
-
+        let percNumber = Math.round((el.iznos / renderUkupanPrihod()) * 100) + "%";
         perc.textContent = percNumber;
     });
 }
@@ -88,18 +96,53 @@ const prihodTotal = document.querySelector("#prihod-total");
 const rashodTotal = document.querySelector("#rashod-total");
 const procenat = document.querySelector("#procenat");
 
-function renderTotalAmounts(budget, prihod, rashod) {
-    budzet.innerHTML = "";
-    prihodTotal.innerHTML = "";
-    rashodTotal.innerHTML = "";
+function renderProcenti() {
     procenat.innerHTML = "";
-    budzet.textContent = budget;
-    prihodTotal.textContent = "+ " + prihod;
-    rashodTotal.textContent = "- " + rashod;
-
-    if (prihod > 0 && rashod > 0) {
-        procenat.textContent = Math.round((rashod / prihod) * 100) + "%";
+    if (renderUkupanPrihod() > 0 && renderUkupanRashod() > 0) {
+        procenat.textContent =
+            Math.round((renderUkupanRashod() / renderUkupanPrihod()) * 100) + "%";
     }
 }
+function renderUkupanPrihod() {
+    let ukupanPrihod = 0;
+    getPrihodiNiz().forEach((el) => {
+        ukupanPrihod += Number(el.iznos);
+    });
+    prihodTotal.innerHTML = "";
+    prihodTotal.textContent = "+ " + ukupanPrihod;
+    return ukupanPrihod;
+}
 
-export { renderPrihodi, renderRashodi, renderTotalAmounts, renderPercPerExpense };
+function renderUkupanRashod() {
+    let ukupanRashod = 0;
+    getRashodiNiz().forEach((el) => {
+        ukupanRashod += Number(el.iznos);
+    });
+    rashodTotal.innerHTML = "";
+    rashodTotal.textContent = "- " + ukupanRashod;
+    return ukupanRashod;
+}
+
+function renderBudzet() {
+    let budzetTotal = 0;
+    getRashodiNiz().forEach((el) => {
+        budzetTotal -= Number(el.iznos);
+    });
+    getPrihodiNiz().forEach((el) => {
+        budzetTotal += Number(el.iznos);
+    });
+    budzet.innerHTML = "";
+    budzet.textContent = budzetTotal;
+}
+
+function renderAll() {
+    renderPrihodi();
+    renderRashodi();
+    renderPercPerExpense();
+    renderUkupanPrihod();
+    renderUkupanRashod();
+    renderBudzet();
+    renderProcenti();
+}
+
+export { renderAll };
