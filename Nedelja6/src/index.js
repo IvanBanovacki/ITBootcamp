@@ -12,9 +12,6 @@ const rashodList = document.querySelector("#list-rashod");
 let prihodiNiz = [];
 let rashodiNiz = [];
 let idCount = 0;
-let ukupanPrihod = 0;
-let ukupanRashod = 0;
-let budzet = 0;
 
 function getPrihodiNiz() {
     return prihodiNiz;
@@ -53,18 +50,4 @@ btnSubmit.addEventListener("click", (e) => {
     select.value = "-";
 });
 
-export {
-    select,
-    descText,
-    amountText,
-    prihodiNiz,
-    rashodiNiz,
-    ukupanPrihod,
-    ukupanRashod,
-    budzet,
-    prihodList,
-    rashodList,
-    form,
-    getPrihodiNiz,
-    getRashodiNiz,
-};
+export { select, descText, amountText, prihodList, rashodList, form, getPrihodiNiz, getRashodiNiz };
