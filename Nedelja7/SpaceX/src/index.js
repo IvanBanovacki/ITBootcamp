@@ -17,7 +17,7 @@ getCompanyInfo().then(res => {
 
 selectLaunch.addEventListener('change', (e) => {
     e.preventDefault()
-    LaunchList([]).innerHTML = ''
+    app.innerHTML = ''
     getPastLaunchesByYear(selectLaunch.value).then(res => {
         app.appendChild(LaunchList(res.data))
     })
